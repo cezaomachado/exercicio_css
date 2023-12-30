@@ -1,137 +1,311 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notícias</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção Brasileira de Futebol</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-    header {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 1em;
-    }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3498db; 
+            color: #000; 
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
 
-    .news-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding: 20px;
-    }
+        header {
+            background-color: #f39c12;
+            text-align: center;
+            padding: 20px;
+        }
 
-    .news-card {
-      width: 45%;
-      margin: 10px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
+        nav {
+            background-color: #2ecc71;
+            padding: 10px;
+            text-align: center;
+            transition: background-color 0.3s ease-in-out;
+        }
 
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px 8px 0 0;
-    }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
 
-    h2 {
-      color: #333;
-      margin: 10px;
-    }
+        nav a:hover {
+            color: #3498db;
+        }
 
-    h3 {
-      color: #666;
-      margin: 10px;
-    }
+        h1, h2 {
+            color: #1e47cf;
+        }
 
-    p {
-      color: #666;
-      margin: 0 10px 10px 10px;
-    }
+        section {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: box-shadow 0.3s ease-in-out;
+        }
 
-    .read-more {
-      display: block;
-      margin: 10px;
-      padding: 8px 16px;
-      background-color: #333;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 4px;
-      text-align: center;
-    }
-  </style>
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        form {
+            background-color: #3498db; /* Azul */
+            color: #ffffff; /* Preto */
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            max-width: 400px; /* Tamanho máximo do formulário */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #000; /* Preto */
+        }
+
+        input, button {
+            width: calc(100% - 20px); /* Leva em consideração o preenchimento */
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box; /* Garante que o preenchimento e a borda não aumentem a largura total */
+        }
+
+        button {
+            background-color: #fff;
+            color: #3498db; /* Azul */
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #3498db; /* Azul */
+            color: #fff;
+        }
+
+        .carousel {
+            overflow: hidden;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+
+        .carousel img:first-child {
+            display: block;
+        }
+
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #fff;
+            background-color: #3498db; /* Azul */
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .carousel-prev:hover, .carousel-next:hover {
+            background-color: #fff;
+            color: #3498db; /* Azul */
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        .news-section {
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .news-article {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #3498db; /* Azul */
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Últimas Notícias</h1>
-  </header>
+    <header>
+        <h1>Seleção Brasileira de Futebol</h1>
+        <p> Descubra a história, conquistas e jogadores incríveis da nossa seleção!</p>
+    </header>
 
-  <div class="news-container">
+    <nav>
+        <a href="#historia">História</a>
+        <a href="#conquistas">Conquistas</a>
+        <a href="#jogadores">Jogadores</a>
+        <a href="#tecnico">Técnico</a>
+        <a href="#contato">Contato</a>
+        <a href="#momentos">Momentos</a>
+        <a href="#noticias">Notícias</a>
+    </nav>
 
-    <!-- Notícia 1 -->
-    <div class="news-card">
-      <img src="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/discurso-politico.jpg" alt="Notícia 1">
-      <h2>O que os politicso falam de você?</h2>
-      <h3>Política</h3>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo distinctio, repellat doloremque repudiandae atque asperiores! In dignissimos eveniet officiis quasi et libero odit illum ut necessitatibus, temporibus sunt nesciunt perferendis.</p>
-      <a href="#" class="read-more">Ler mais</a>
+    <section id="historia">
+        <h2>História da Seleção Brasileira</h2>
+        <p>A Seleção Brasileira de Futebol é uma das mais aclamadas do mundo, conhecida por seu estilo único e conquistas extraordinárias. Desde sua fundação em 1914, a seleção tem deslumbrado os fãs de futebol em todo o mundo.</p>
+        <p>O Brasil é o único país que participou de todas as Copas do Mundo desde o início do torneio em 1930. A paixão pelo futebol é evidente em todos os cantos do país, desde as ruas até os estádios lotados.</p>
+        <img src="https://s2-oglobo.glbimg.com/wOTe5K8EGvKgGoitpgN4w5KaNs4=/0x0:3543x2362/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2023/s/B/ONnHvwQe2cecV7R8vGIw/53267350943-5a4f862126-o-1-.jpg" alt="Seleção Brasileira">
+    </section>
+
+    <section id="conquistas">
+        <h2>Conquistas</h2>
+        <p>A seleção brasileira ostenta um impressionante histórico de conquistas, incluindo títulos em algumas das competições mais prestigiadas do mundo.</p>
+        <ul>
+            <li><strong>Copa do Mundo:</strong> 5 títulos (1958, 1962, 1970, 1994, 2002)</li>
+            <li><strong>Copa América:</strong> 9 títulos (1919, 1922, 1949, 1989, 1997, 1999, 2004, 2007, 2019)</li>
+            <li><strong>Copa das Confederações:</strong> 4 títulos (1997, 2005, 2009, 2013)</li>
+        </ul>
+        <p>Essas conquistas não apenas demonstram a habilidade excepcional dos jogadores brasileiros, mas também refletem a rica tradição futebolística do país.</p>
+    </section>
+
+    <section id="jogadores">
+        <h2>Jogadores Notáveis</h2>
+        <p>A seleção brasileira teve o privilégio de contar com alguns dos maiores talentos da história do futebol. Esses jogadores deixaram uma marca indelével nas memórias dos fãs e contribuíram para o prestígio da seleção. Alguns dos jogadores notáveis incluem:</p>
+        <ul>
+            <li><strong>Pelé:</strong> Três vezes campeão mundial e artilheiro lendário.</li>
+            <li><strong>Zico:</strong> Ícone do futebol brasileiro, conhecido por suas habilidades técnicas.</li>
+            <li><strong>Ronaldo Nazário:</strong> Fenômeno, um dos maiores atacantes da história.</li>
+            <li><strong>Ronaldinho Gaúcho:</strong> Driblador habilidoso e duas vezes Jogador do Ano da FIFA.</li>
+            <li><strong>Kaká:</strong> Meio-campista elegante e vencedor do prêmio de Melhor Jogador da FIFA em 2007.</li>
+            <li><strong>Neymar Jr.:</strong> Atacante talentoso e herdeiro da tradição brasileira.</li>
+            <!-- Adicione mais jogadores conforme necessário -->
+        </ul>
+        <p>Esses jogadores não apenas brilharam nos campos, mas também se tornaram ícones fora deles, inspirando gerações futuras de jogadores e fãs.</p>
+    </section>
+
+    <section id="tecnico">
+        <h2>Técnico Atual: Tite</h2>
+        <p>Adenor Leonardo Bacchi, mais conhecido como Tite, é o atual técnico da seleção brasileira. Tite assumiu o cargo em 2016 e desde então liderou a equipe em importantes competições internacionais, mantendo a tradição de sucesso do futebol brasileiro.</p>
+        <p>Com uma abordagem tática sólida e um compromisso com a excelência, Tite continua a ser uma figura central no desenvolvimento e desempenho da seleção.</p>
+    </section>
+
+    <form id="contato">
+        <h2>Entre em Contato</h2>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div class="carousel" id="momentos">
+        <img src="https://s2-ge.glbimg.com/SKgFNDhF7GYDOQGwWwGnlvwrmAo=/0x0:1920x1240/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2022/f/s/0bqFuySheMW2VCHYSNbA/e164f882ce971ee53c8ac11769cea18083478829w.jpg" alt="Momento 1">
+        <img src="https://imagens.ebc.com.br/jKlJCOcRpirQqqBsjjxHb0GAHYk=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/50442242048_27a2ccef4a_4k.jpg?itok=PQqbYoZt" alt="Momento 2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbu1TfDVIMhMpUMsswPy1XwcYYojUp-EgDuddl_gIUcYg13tzEqoPr9iAJXS_GzreLNT4&usqp=CAU" alt="Momento 3">
+        <!-- Adicione mais imagens para o carrossel conforme necessário -->
+        <button class="carousel-prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-next" onclick="nextSlide()">&#10095;</button>
     </div>
 
-    <!-- Notícia 2 -->
-    <div class="news-card">
-      <img src="https://uploads.metropoles.com/wp-content/uploads/2023/12/20165449/Presidente-Lula-discursa-durante-sessa%CC%83o-destinada-a%CC%80-promulgac%CC%A7a%CC%83o-da-Proposta-de-Emenda-a%CC%80-Constituic%CC%A7a%CC%83o-PEC-452019-que-instituiu-a-reforma-tributa%CC%81ria-4.jpg" alt="Notícia 2">
-      <h2>Projetos da Atual Precidencai</h2>
-      <h3>Política</h3>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas nisi, doloribus iusto earum accusamus dolor obcaecati molestiae cupiditate mollitia. Quod ipsum perspiciatis aliquam, animi ad dolore iusto enim sunt officia?</p>
-      <a href="#" class="read-more">Ler mais</a>
+    <div class="news-section" id="noticias">
+        <h2>Últimas Notícias</h2>
+        <div class="news-article">
+            <h3>Seleção Masculina Sub-23 é convocada para o Torneio Pré-Olímpico</h3>
+            <p>O técnico da Seleção Masculina Sub-23, Ramon Menezes, convocou nesta quinta-feira (21) os 23 jogadores que vão disputar o Torneio Pré-Olímpico. A competição acontecerá na Venezuela entre os dias 20 de janeiro a 11 de fevereiro de 2024.</p>
+        </div>
+        <div class="news-article">
+            <h3>Técnico Ramon Menezes convoca a Seleção Pré-Olímpica nesta quinta-feira (21), às 16h</h3>
+            <p>O técnico da Seleção Masculina Sub-23, Ramon Menezes, anuncia nesta quinta-feira (21), às 16h, a lista dos 23 jogadores que vão disputar o Torneio Pré-Olimpico de Futebol, que acontece de 20 de janeiro a 11 de fevereiro de 2024, na Venezuela.</p>
+        </div>
+        <!-- Adicione mais notícias conforme necessário -->
     </div>
 
-    <!-- Notícia 3 -->
-    <div class="news-card">
-      <img src="https://conteudo.imguol.com.br/c/noticias/c8/2020/11/24/smartphones-topo-de-linha-de-2020-1606230609963_v2_900x506.png" alt="Notícia 3">
-      <h2>Top Modelos 2023</h2>
-      <h3>Tecnologia</h3>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio quam esse laborum officiis voluptate labore nesciunt harum accusantium, nulla, exercitationem nam placeat impedit! Quidem maiores, quia assumenda facilis magnam fugit?</p>
-      <a href="#" class="read-more">Ler mais</a>
-    </div>
+    <footer>
+        <p>&copy; 2023 Seleção Brasileira de Futebol</p>
+    </footer>
 
-    <!-- Notícia 4 -->
-    <div class="news-card">
-      <img src="https://t.ctcdn.com.br/N3gU0kYpOkOQ9pmV1UPLyrqYmA4=/640x360/smart/i520531.jpeg" alt="Notícia 4">
-      <h2>Novidades em 4 rodas</h2>
-      <h3>Tecnologia</h3>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod ipsum, quo officiis odit quae reiciendis nihil cum veritatis? Veniam illo molestiae inventore eum quas rerum ea illum repellendus eligendi laboriosam.</p>
-      <a href="#" class="read-more">Ler mais</a>
-    </div>
+    <script>
+        // Funções para o carrossel
+        let slideIndex = 0;
 
-    <!-- Notícia 5 -->
-    <div class="news-card">
-        <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-sao-paulo-capa2019-04-820x430.jpg" alt="Notícia 4">
-        <h2>Relaxar com a familia</h2>
-        <h3>Entretenimento</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod ipsum, quo officiis odit quae reiciendis nihil cum veritatis? Veniam illo molestiae inventore eum quas rerum ea illum repellendus eligendi laboriosam.</p>
-        <a href="#" class="read-more">Ler mais</a>
-      </div>
+        function showSlides() {
+            let i;
+            const slides = document.querySelectorAll('.carousel img');
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = 'block';
+            setTimeout(showSlides, 3000); // Muda a imagem a cada 3 segundos
+        }
 
-      <!-- Notícia 6 -->
-    <div class="news-card">
-        <img src="https://topservicetur.com.br/wp-content/uploads/2017/02/58239-x-restaurantes-inusitados-para-conhecer-ao-redor-do-mundo.jpg" alt="Notícia 4">
-        <h2>Top Restaurantes</h2>
-        <h3>Entretenimento</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod ipsum, quo officiis odit quae reiciendis nihil cum veritatis? Veniam illo molestiae inventore eum quas rerum ea illum repellendus eligendi laboriosam.</p>
-        <a href="#" class="read-more">Ler mais</a>
-      </div>
+        function prevSlide() {
+            if (slideIndex > 1) {
+                slideIndex--;
+            } else {
+                slideIndex = document.querySelectorAll('.carousel img').length;
+            }
+            showSlides();
+        }
 
+        function nextSlide() {
+            if (slideIndex < document.querySelectorAll('.carousel img').length) {
+                slideIndex++;
+            } else {
+                slideIndex = 1;
+            }
+            showSlides();
+        }
 
-  </div>
-
+        // Iniciar o carrossel quando a página carregar
+        showSlides();
+    </script>
 </body>
 </html>
